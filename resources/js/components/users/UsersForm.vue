@@ -1,6 +1,6 @@
 <template>
     <div class="pb-10 mt-10 container">
-        <div class="shadow rounded-lg border-2 bg-white p-4 flex">
+        <div class="shadow rounded-lg border-2 bg-white p-4 flex flex-col md:flex-row lg:flex-row">
             <div class="w-full text-center">
                 <h1 class="font-bold text-lg">Crear Usuario</h1>
                 
@@ -25,7 +25,7 @@
                         Cédula:
                     </div>
                     <div class="w-3/4">
-                        <el-input v-model="identification"></el-input>
+                        <el-input v-model="identification" :disabled="id !== 0"></el-input>
                     </div>
                 </div>
                 <div class="flex flex-wrap mt-2">
@@ -33,7 +33,7 @@
                         email:
                     </div>
                     <div class="w-3/4">
-                        <el-input v-model="email" maxlength="150" show-word-limit></el-input>
+                        <el-input v-model="email" maxlength="150" show-word-limit :disabled="id !== 0"></el-input>
                     </div>
                 </div>
                 <div class="flex flex-wrap mt-2">
@@ -165,6 +165,7 @@ export default {
             this.country = ''
             this.address = ''
             this.cell_phone = ''
+            this.errors = {}
         },
         cancelAction () {
             window.location.href = '/users';
@@ -182,10 +183,10 @@ export default {
                     cell_phone: this.cell_phone,
                 })
                 this.$notify({
-                                 title: 'Creado',
-                                 message: 'Usuario creado correctamente',
-                                 type: 'success'
-                             });
+                     title: 'Creado',
+                     message: 'Usuario creado correctamente',
+                     type: 'success'
+                })
                 this.clearInputs()
                 
             } catch (error) {
@@ -205,10 +206,11 @@ export default {
                     cell_phone: this.cell_phone,
                 })
                 this.$notify({
-                                 title: 'Actualizado',
-                                 message: 'Usuario actualizado correctamente',
-                                 type: 'success'
-                             });
+                     title: 'Actualizado',
+                     message: 'Usuario actualizado correctamente',
+                     type: 'success'
+                })
+                this.errors = {}
 
             } catch (error) {
                 this.errors = error.response?.data?.errors

@@ -18,11 +18,11 @@ use App\Http\Controllers\CategoryActionsController;
 
 Route::get('/', function () {
     return redirect('/users');
-//    return view('welcome');
 });
 Route::get('/users', [UsersController::class, 'index']);
 Route::post('/users', [UsersController::class, 'store']);
-Route::get('/users/create', [UsersController::class, 'create']);
+Route::post('/users/{user}', [UsersController::class, 'update']);
+Route::post('/users/create', [UsersController::class, 'create']);
 Route::get('/users/{user}', [UsersController::class, 'edit']);
 Route::delete('/users/{user}', [UsersController::class, 'destroy']);
 Route::get('/get-users', [UsersActionsController::class, 'getAllUsers']);

@@ -7036,8 +7036,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ListUsers",
   data: function data() {
@@ -7376,6 +7374,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.country = '';
       this.address = '';
       this.cell_phone = '';
+      this.errors = {};
     },
     cancelAction: function cancelAction() {
       window.location.href = '/users';
@@ -7462,20 +7461,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   type: 'success'
                 });
 
-                _context3.next = 10;
+                _this3.errors = {};
+                _context3.next = 11;
                 break;
 
-              case 7:
-                _context3.prev = 7;
+              case 8:
+                _context3.prev = 8;
                 _context3.t0 = _context3["catch"](0);
                 _this3.errors = (_error$response2 = _context3.t0.response) === null || _error$response2 === void 0 ? void 0 : (_error$response2$data = _error$response2.data) === null || _error$response2$data === void 0 ? void 0 : _error$response2$data.errors;
 
-              case 10:
+              case 11:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 7]]);
+        }, _callee3, null, [[0, 8]]);
       }))();
     }
   }
@@ -93471,235 +93471,231 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "pb-10 mt-10 container" }, [
+  return _c("div", { staticClass: "pb-10 mt-2 container" }, [
     _c("div", { staticClass: "mx-auto" }, [
-      _c("div", {}, [
-        _vm.users
-          ? _c(
-              "div",
-              { staticClass: "flex flex-wrap" },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "w-full shadow rounded-lg border-2 bg-white p-4 flex flex-wrap",
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "w-full md:w-1/2" },
-                      [
-                        _c(
-                          "el-input",
-                          {
-                            staticClass: "input-with-select",
-                            attrs: { placeholder: "¿Deseas buscar algo?" },
-                            model: {
-                              value: _vm.search_key,
-                              callback: function ($$v) {
-                                _vm.search_key = $$v
-                              },
-                              expression: "search_key",
+      _c(
+        "div",
+        { staticClass: "w-full px-6 pb-2 text-right" },
+        [
+          _c(
+            "el-button",
+            {
+              attrs: { type: "success", round: "" },
+              on: { click: _vm.createUser },
+            },
+            [_vm._v("Crear usuario")]
+          ),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm.users
+        ? _c(
+            "div",
+            { staticClass: "flex flex-wrap" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-full shadow rounded-lg border-2 bg-white p-4 flex flex-wrap",
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "w-full md:w-1/2" },
+                    [
+                      _c(
+                        "el-input",
+                        {
+                          staticClass: "input-with-select",
+                          attrs: { placeholder: "¿Deseas buscar algo?" },
+                          model: {
+                            value: _vm.search_key,
+                            callback: function ($$v) {
+                              _vm.search_key = $$v
                             },
+                            expression: "search_key",
                           },
-                          [
-                            _c("el-button", {
-                              attrs: { slot: "append", icon: "el-icon-search" },
-                              on: { click: _vm.searchUsers },
-                              slot: "append",
-                            }),
-                          ],
-                          1
-                        ),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "w-full md:w-1/2 px-6 text-right" },
-                      [
-                        _c(
-                          "el-button",
-                          {
-                            attrs: { type: "success", round: "" },
-                            on: { click: _vm.createUser },
-                          },
-                          [_vm._v("Crear usuario")]
-                        ),
-                      ],
-                      1
-                    ),
-                  ]
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.users, function (user) {
-                  return _c("div", { staticClass: "w-full mt-2" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "flex flex-wrap shadow rounded-lg border-2 bg-white px-4 py-2",
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "w-full lg:w-5/6 flex flex-wrap" },
-                          [
-                            _c(
-                              "div",
-                              { staticClass: "w-full md:w-2/3 lg:w-1/4 py-1" },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(user.first_name) +
-                                    " " +
-                                    _vm._s(user.last_name) +
-                                    "\n                            "
-                                ),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "w-full md:w-1/2 lg:w-1/4 py-1" },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(user.email) +
-                                    "\n                            "
-                                ),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "w-1/2 md:1/3 lg:w-1/6 py-1" },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(user.identification) +
-                                    "\n                            "
-                                ),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "w-1/2 md:1/3 lg:w-1/6 py-1" },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(user.country) +
-                                    "\n                            "
-                                ),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "w-1/2 md:1/3 lg:w-1/6 py-1" },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(user.address) +
-                                    "\n                            "
-                                ),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "w-1/2 md:1/3 lg:w-1/4 py-1" },
-                              [
-                                user.category && user.category.name
-                                  ? _c("div", [
-                                      user.category.name === "Cliente"
-                                        ? _c("i", {
-                                            staticClass: "far fa-user",
-                                          })
-                                        : user.category.name === "Proveedor"
-                                        ? _c("i", {
-                                            staticClass: "far fa-address-card",
-                                          })
-                                        : _c("i", {
-                                            staticClass: "far fa-building",
-                                          }),
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(user.category.name) +
-                                          "\n                                "
-                                      ),
-                                    ])
-                                  : _vm._e(),
-                              ]
-                            ),
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "w-full lg:w-1/6 pt-2" },
-                          [
-                            _c(
-                              "el-button",
-                              {
-                                attrs: { type: "primary", round: "" },
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.editUser(user.id)
-                                  },
-                                },
-                              },
-                              [_vm._v("Editar")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "el-popconfirm",
-                              {
-                                attrs: {
-                                  title:
-                                    "¿Estas seguro que deseas eliminar este usuario?",
-                                },
-                                on: {
-                                  confirm: function ($event) {
-                                    return _vm.deleteUser(user.id)
-                                  },
-                                },
-                              },
-                              [
-                                _c(
-                                  "el-button",
-                                  {
-                                    attrs: {
-                                      slot: "reference",
-                                      type: "danger",
-                                      round: "",
-                                    },
-                                    slot: "reference",
-                                  },
-                                  [_vm._v("Eliminar")]
-                                ),
-                              ],
-                              1
-                            ),
-                          ],
-                          1
-                        ),
-                      ]
-                    ),
-                  ])
-                }),
-              ],
-              2
-            )
-          : _c("div", [
-              _vm._v(
-                "\n                Boton para agregar primer usuario\n            "
+                        },
+                        [
+                          _c("el-button", {
+                            attrs: { slot: "append", icon: "el-icon-search" },
+                            on: { click: _vm.searchUsers },
+                            slot: "append",
+                          }),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ]
               ),
+              _vm._v(" "),
+              _vm._l(_vm.users, function (user) {
+                return _c("div", { staticClass: "w-full mt-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "flex flex-wrap shadow rounded-lg border-2 bg-white px-4 py-2",
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "w-full lg:w-5/6 flex flex-wrap" },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "w-full md:w-2/3 lg:w-1/4 py-1" },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(user.first_name) +
+                                  " " +
+                                  _vm._s(user.last_name) +
+                                  "\n                        "
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "w-full md:w-1/2 lg:w-1/4 py-1" },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(user.email) +
+                                  "\n                        "
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "w-1/2 md:1/3 lg:w-1/6 py-1" },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(user.identification) +
+                                  "\n                        "
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "w-1/2 md:1/3 lg:w-1/6 py-1" },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(user.country) +
+                                  "\n                        "
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "w-1/2 md:1/3 lg:w-1/6 py-1" },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(user.address) +
+                                  "\n                        "
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "w-1/2 md:1/3 lg:w-1/4 py-1" },
+                            [
+                              user.category && user.category.name
+                                ? _c("div", [
+                                    user.category.name === "Cliente"
+                                      ? _c("i", { staticClass: "far fa-user" })
+                                      : user.category.name === "Proveedor"
+                                      ? _c("i", {
+                                          staticClass: "far fa-address-card",
+                                        })
+                                      : _c("i", {
+                                          staticClass: "far fa-building",
+                                        }),
+                                    _vm._v(
+                                      "\n                                " +
+                                        _vm._s(user.category.name) +
+                                        "\n                            "
+                                    ),
+                                  ])
+                                : _vm._e(),
+                            ]
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "w-full lg:w-1/6 pt-2" },
+                        [
+                          _c(
+                            "el-button",
+                            {
+                              attrs: { type: "primary", round: "" },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.editUser(user.id)
+                                },
+                              },
+                            },
+                            [_vm._v("Editar")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "el-popconfirm",
+                            {
+                              attrs: {
+                                title:
+                                  "¿Estas seguro que deseas eliminar este usuario?",
+                              },
+                              on: {
+                                confirm: function ($event) {
+                                  return _vm.deleteUser(user.id)
+                                },
+                              },
+                            },
+                            [
+                              _c(
+                                "el-button",
+                                {
+                                  attrs: {
+                                    slot: "reference",
+                                    type: "danger",
+                                    round: "",
+                                  },
+                                  slot: "reference",
+                                },
+                                [_vm._v("Eliminar")]
+                              ),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ]
+                  ),
+                ])
+              }),
+            ],
+            2
+          )
+        : _c("div", [
+            _c("h1", { staticClass: "font-bold text-lg" }, [
+              _vm._v("No se encontraron usuarios"),
             ]),
-      ]),
+          ]),
     ]),
   ])
 }
@@ -93727,287 +93723,299 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "pb-10 mt-10 container" }, [
-    _c("div", { staticClass: "shadow rounded-lg border-2 bg-white p-4 flex" }, [
-      _c("div", { staticClass: "w-full text-center" }, [
-        _c("h1", { staticClass: "font-bold text-lg" }, [
-          _vm._v("Crear Usuario"),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex flex-wrap mt-2" }, [
-          _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
-            _vm._v("\n                    Nombres:\n                "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "shadow rounded-lg border-2 bg-white p-4 flex flex-col md:flex-row lg:flex-row",
+      },
+      [
+        _c("div", { staticClass: "w-full text-center" }, [
+          _c("h1", { staticClass: "font-bold text-lg" }, [
+            _vm._v("Crear Usuario"),
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "w-3/4" },
-            [
-              _c("el-input", {
-                attrs: {
-                  minlength: "5",
-                  maxlength: "100",
-                  "show-word-limit": "",
-                },
-                model: {
-                  value: _vm.first_name,
-                  callback: function ($$v) {
-                    _vm.first_name = $$v
-                  },
-                  expression: "first_name",
-                },
-              }),
-            ],
-            1
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex flex-wrap mt-2" }, [
-          _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
-            _vm._v("\n                    Apellidos:\n                "),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "w-3/4" },
-            [
-              _c("el-input", {
-                attrs: { maxlength: "100", "show-word-limit": "" },
-                model: {
-                  value: _vm.last_name,
-                  callback: function ($$v) {
-                    _vm.last_name = $$v
-                  },
-                  expression: "last_name",
-                },
-              }),
-            ],
-            1
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex flex-wrap mt-2" }, [
-          _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
-            _vm._v("\n                    Cédula:\n                "),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "w-3/4" },
-            [
-              _c("el-input", {
-                model: {
-                  value: _vm.identification,
-                  callback: function ($$v) {
-                    _vm.identification = $$v
-                  },
-                  expression: "identification",
-                },
-              }),
-            ],
-            1
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex flex-wrap mt-2" }, [
-          _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
-            _vm._v("\n                    email:\n                "),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "w-3/4" },
-            [
-              _c("el-input", {
-                attrs: { maxlength: "150", "show-word-limit": "" },
-                model: {
-                  value: _vm.email,
-                  callback: function ($$v) {
-                    _vm.email = $$v
-                  },
-                  expression: "email",
-                },
-              }),
-            ],
-            1
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex flex-wrap mt-2" }, [
-          _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
-            _vm._v("\n                    Celular:\n                "),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "w-3/4" },
-            [
-              _c("el-input", {
-                attrs: {
-                  minlength: "10",
-                  maxlength: "10",
-                  "show-word-limit": "",
-                },
-                model: {
-                  value: _vm.cell_phone,
-                  callback: function ($$v) {
-                    _vm.cell_phone = $$v
-                  },
-                  expression: "cell_phone",
-                },
-              }),
-            ],
-            1
-          ),
-        ]),
-        _vm._v(" "),
-        _vm.categories
-          ? _c("div", { staticClass: "flex flex-wrap mt-2" }, [
-              _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
-                _vm._v("\n                    Categoria:\n                "),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "w-3/4" },
-                [
-                  _c(
-                    "el-select",
-                    {
-                      staticClass: "w-full",
-                      attrs: { placeholder: "Selecciona una categoria" },
-                      model: {
-                        value: _vm.category_id,
-                        callback: function ($$v) {
-                          _vm.category_id = $$v
-                        },
-                        expression: "category_id",
-                      },
-                    },
-                    _vm._l(_vm.categories, function (category) {
-                      return _c("el-option", {
-                        key: category.id,
-                        attrs: { label: category.name, value: category.id },
-                      })
-                    }),
-                    1
-                  ),
-                ],
-                1
-              ),
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.countries
-          ? _c("div", { staticClass: "flex flex-wrap mt-2" }, [
-              _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
-                _vm._v("\n                    Pais:\n                "),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "w-3/4" },
-                [
-                  _c(
-                    "el-select",
-                    {
-                      staticClass: "w-full",
-                      attrs: {
-                        filterable: "",
-                        placeholder: "Selecciona un pais",
-                      },
-                      model: {
-                        value: _vm.country,
-                        callback: function ($$v) {
-                          _vm.country = $$v
-                        },
-                        expression: "country",
-                      },
-                    },
-                    _vm._l(_vm.countries, function (item) {
-                      return _c("el-option", {
-                        key: item.country,
-                        attrs: { label: item.country, value: item.country },
-                      })
-                    }),
-                    1
-                  ),
-                ],
-                1
-              ),
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex flex-wrap mt-2" }, [
-          _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
-            _vm._v("\n                    Dirección:\n                "),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "w-3/4" },
-            [
-              _c("el-input", {
-                attrs: { maxlength: "180", "show-word-limit": "" },
-                model: {
-                  value: _vm.address,
-                  callback: function ($$v) {
-                    _vm.address = $$v
-                  },
-                  expression: "address",
-                },
-              }),
-            ],
-            1
-          ),
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "text-center pt-4" },
-          [
-            _vm.id === 0
-              ? _c(
-                  "el-button",
-                  {
-                    attrs: { type: "success", round: "" },
-                    on: { click: _vm.saveUser },
-                  },
-                  [_vm._v("Guardar")]
-                )
-              : _c(
-                  "el-button",
-                  {
-                    attrs: { type: "success", round: "" },
-                    on: { click: _vm.saveUser },
-                  },
-                  [_vm._v("Actualizar")]
-                ),
+          _c("div", { staticClass: "flex flex-wrap mt-2" }, [
+            _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
+              _vm._v("\n                    Nombres:\n                "),
+            ]),
             _vm._v(" "),
             _c(
-              "el-button",
-              { attrs: { round: "" }, on: { click: _vm.cancelAction } },
-              [_vm._v("cancelar")]
-            ),
-          ],
-          1
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full p-4" }, [
-        _vm.errorValues.length
-          ? _c("div", { staticClass: "rounded-md bg-red-300 p-2" }, [
-              _c(
-                "ul",
-                { staticClass: "list-disc ml-4" },
-                _vm._l(_vm.errorValues, function (error, key) {
-                  return _c("li", { key: key }, [_vm._v(_vm._s(error[0]))])
+              "div",
+              { staticClass: "w-3/4" },
+              [
+                _c("el-input", {
+                  attrs: {
+                    minlength: "5",
+                    maxlength: "100",
+                    "show-word-limit": "",
+                  },
+                  model: {
+                    value: _vm.first_name,
+                    callback: function ($$v) {
+                      _vm.first_name = $$v
+                    },
+                    expression: "first_name",
+                  },
                 }),
-                0
+              ],
+              1
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex flex-wrap mt-2" }, [
+            _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
+              _vm._v("\n                    Apellidos:\n                "),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "w-3/4" },
+              [
+                _c("el-input", {
+                  attrs: { maxlength: "100", "show-word-limit": "" },
+                  model: {
+                    value: _vm.last_name,
+                    callback: function ($$v) {
+                      _vm.last_name = $$v
+                    },
+                    expression: "last_name",
+                  },
+                }),
+              ],
+              1
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex flex-wrap mt-2" }, [
+            _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
+              _vm._v("\n                    Cédula:\n                "),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "w-3/4" },
+              [
+                _c("el-input", {
+                  attrs: { disabled: _vm.id !== 0 },
+                  model: {
+                    value: _vm.identification,
+                    callback: function ($$v) {
+                      _vm.identification = $$v
+                    },
+                    expression: "identification",
+                  },
+                }),
+              ],
+              1
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex flex-wrap mt-2" }, [
+            _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
+              _vm._v("\n                    email:\n                "),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "w-3/4" },
+              [
+                _c("el-input", {
+                  attrs: {
+                    maxlength: "150",
+                    "show-word-limit": "",
+                    disabled: _vm.id !== 0,
+                  },
+                  model: {
+                    value: _vm.email,
+                    callback: function ($$v) {
+                      _vm.email = $$v
+                    },
+                    expression: "email",
+                  },
+                }),
+              ],
+              1
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex flex-wrap mt-2" }, [
+            _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
+              _vm._v("\n                    Celular:\n                "),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "w-3/4" },
+              [
+                _c("el-input", {
+                  attrs: {
+                    minlength: "10",
+                    maxlength: "10",
+                    "show-word-limit": "",
+                  },
+                  model: {
+                    value: _vm.cell_phone,
+                    callback: function ($$v) {
+                      _vm.cell_phone = $$v
+                    },
+                    expression: "cell_phone",
+                  },
+                }),
+              ],
+              1
+            ),
+          ]),
+          _vm._v(" "),
+          _vm.categories
+            ? _c("div", { staticClass: "flex flex-wrap mt-2" }, [
+                _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
+                  _vm._v("\n                    Categoria:\n                "),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "w-3/4" },
+                  [
+                    _c(
+                      "el-select",
+                      {
+                        staticClass: "w-full",
+                        attrs: { placeholder: "Selecciona una categoria" },
+                        model: {
+                          value: _vm.category_id,
+                          callback: function ($$v) {
+                            _vm.category_id = $$v
+                          },
+                          expression: "category_id",
+                        },
+                      },
+                      _vm._l(_vm.categories, function (category) {
+                        return _c("el-option", {
+                          key: category.id,
+                          attrs: { label: category.name, value: category.id },
+                        })
+                      }),
+                      1
+                    ),
+                  ],
+                  1
+                ),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.countries
+            ? _c("div", { staticClass: "flex flex-wrap mt-2" }, [
+                _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
+                  _vm._v("\n                    Pais:\n                "),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "w-3/4" },
+                  [
+                    _c(
+                      "el-select",
+                      {
+                        staticClass: "w-full",
+                        attrs: {
+                          filterable: "",
+                          placeholder: "Selecciona un pais",
+                        },
+                        model: {
+                          value: _vm.country,
+                          callback: function ($$v) {
+                            _vm.country = $$v
+                          },
+                          expression: "country",
+                        },
+                      },
+                      _vm._l(_vm.countries, function (item) {
+                        return _c("el-option", {
+                          key: item.country,
+                          attrs: { label: item.country, value: item.country },
+                        })
+                      }),
+                      1
+                    ),
+                  ],
+                  1
+                ),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex flex-wrap mt-2" }, [
+            _c("div", { staticClass: "w-1/4 text-right pr-4 pt-2" }, [
+              _vm._v("\n                    Dirección:\n                "),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "w-3/4" },
+              [
+                _c("el-input", {
+                  attrs: { maxlength: "180", "show-word-limit": "" },
+                  model: {
+                    value: _vm.address,
+                    callback: function ($$v) {
+                      _vm.address = $$v
+                    },
+                    expression: "address",
+                  },
+                }),
+              ],
+              1
+            ),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "text-center pt-4" },
+            [
+              _vm.id === 0
+                ? _c(
+                    "el-button",
+                    {
+                      attrs: { type: "success", round: "" },
+                      on: { click: _vm.saveUser },
+                    },
+                    [_vm._v("Guardar")]
+                  )
+                : _c(
+                    "el-button",
+                    {
+                      attrs: { type: "success", round: "" },
+                      on: { click: _vm.saveUser },
+                    },
+                    [_vm._v("Actualizar")]
+                  ),
+              _vm._v(" "),
+              _c(
+                "el-button",
+                { attrs: { round: "" }, on: { click: _vm.cancelAction } },
+                [_vm._v("cancelar")]
               ),
-            ])
-          : _vm._e(),
-      ]),
-    ]),
+            ],
+            1
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-full p-4" }, [
+          _vm.errorValues.length
+            ? _c("div", { staticClass: "rounded-md bg-red-300 p-2" }, [
+                _c(
+                  "ul",
+                  { staticClass: "list-disc ml-4" },
+                  _vm._l(_vm.errorValues, function (error, key) {
+                    return _c("li", { key: key }, [_vm._v(_vm._s(error[0]))])
+                  }),
+                  0
+                ),
+              ])
+            : _vm._e(),
+        ]),
+      ]
+    ),
   ])
 }
 var staticRenderFns = []

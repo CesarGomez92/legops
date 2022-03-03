@@ -27,12 +27,12 @@ class UsersController extends Controller
     public function store()
     {
         request()->validate([
-                                        'first_name' => 'required|min:5|max:100|alpha',
-                                        'last_name' => 'required|max:100|alpha',
+                                        'first_name' => 'required|min:5|max:100|regex:/^[a-zñA-ZÑ ]+$/',
+                                        'last_name' => 'required|max:100|regex:/^[a-zñA-ZÑ ]+$/',
                                         'identification' => 'required|unique:users|',
                                         'email' => 'required|email|unique:users|max:150',
                                         'address' => 'required|max:180',
-                                        'cell_phone' => 'required|numeric|integer'
+                                        'cell_phone' => 'required|digits_between:10,10|numeric'
                                     ]);
         
         $data = request()->all();
@@ -45,7 +45,6 @@ class UsersController extends Controller
         Mail::to($admin_mail)->send(new UsersByCountry());
         
         return 200;
-        
     }
 
     public function edit(User $user)
@@ -55,6 +54,24 @@ class UsersController extends Controller
         return view('users.edit', ['user' => $user, 'categories' => $categories]);
     }
 
+    public function update()
+    {
+        request()->validate([
+                                'first_name' => 'required|min:5|max:100|regex:/^[a-zñA-ZÑ ]+$/',
+                                'last_name' => 'required|max:100|regex:/^[a-zñA-ZÑ ]+$/',
+                                'identification' => 'required',
+                                'email' => 'required|email|max:150',
+                                'address' => 'required|max:180',
+                                'cell_phone' => 'required|digits_between:10,10|numeric'
+                            ]);
+
+        $data = request()->all();
+
+        $user = User::update($data);
+
+        return 200;
+    }
+    
     public function destroy(User $user)
     {
         $results = [];
