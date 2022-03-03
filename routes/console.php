@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Categories\Category;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -13,6 +14,18 @@ use Illuminate\Support\Facades\Artisan;
 | simple approach to interacting with each command's IO methods.
 |
 */
+
+Artisan::command('categories:fill-data', function (){
+    
+    $categories = ['Cliente', 'Proveedor', 'Funcionario Interno'];
+    $bar        = $this->output->createProgressBar(count($categories));
+    foreach ($categories as $category){
+        Category::firstOrCreate(['name' => $category]);
+        $bar->advance();
+    }
+    $bar->finish();
+    
+})->purpose('fill categories table');
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());

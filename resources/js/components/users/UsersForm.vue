@@ -83,7 +83,9 @@
                     </div>
                 </div>
                 <div class="text-center pt-4">
-                    <el-button @click="saveUser" type="success" round>Guardar</el-button>
+                    <el-button v-if="id === 0" @click="saveUser" type="success" round>Guardar</el-button>
+                    <el-button v-else @click="saveUser" type="success" round>Actualizar</el-button>
+                    <el-button round @click="cancelAction">cancelar</el-button>
                 </div>
             </div>
             <div class="w-full p-4">
@@ -101,10 +103,16 @@
 export default {
     name: "UsersForm",
     props: {
-        categories: null,
+        categories: {
+            default: null,
+        },
+        user: {
+            default: null,
+        }
     },
     data() {
         return {
+            id: 0,
             countries: {},
             first_name: '',
             last_name: '',
@@ -119,6 +127,17 @@ export default {
     },
     mounted() {
         this.getCountries()
+        if (this.user) {
+            this.id = this.user.id
+            this.first_name = this.user.first_name
+            this.last_name = this.user.last_name
+            this.identification = this.user.identification
+            this.email = this.user.email
+            this.category_id = this.user.category_id
+            this.country = this.user.country
+            this.address = this.user.address
+            this.cell_phone = this.user.cell_phone
+        }
     },
     computed: {
         errorValues () {
@@ -147,15 +166,12 @@ export default {
             this.address = ''
             this.cell_phone = ''
         },
-        validateFields() {
-            let only_letters = /^[A-Za-z]+$/
-            if(!only_letters.test(this.first_name)){
-                this.errors.push('El nombre solo puede tener letras')
-            }
+        cancelAction () {
+            window.location.href = '/users';
         },
-        async saveUser() {
+        async saveUser () {
             try {
-                const data = await axios.post(`/users`, {
+                const result = await axios.post(`/users`, {
                     first_name: this.first_name,
                     last_name: this.last_name,
                     identification: this.identification,
@@ -165,6 +181,35 @@ export default {
                     address: this.address,
                     cell_phone: this.cell_phone,
                 })
+                this.$notify({
+                                 title: 'Creado',
+                                 message: 'Usuario creado correctamente',
+                                 type: 'success'
+                             });
+                this.clearInputs()
+                
+            } catch (error) {
+                this.errors = error.response?.data?.errors
+            }
+        },
+        async updateUser () {
+            try {
+                const result = await axios.put(`/users/` + this.id, {
+                    first_name: this.first_name,
+                    last_name: this.last_name,
+                    identification: this.identification,
+                    email: this.email,
+                    category_id: this.category_id,
+                    country: this.country,
+                    address: this.address,
+                    cell_phone: this.cell_phone,
+                })
+                this.$notify({
+                                 title: 'Actualizado',
+                                 message: 'Usuario actualizado correctamente',
+                                 type: 'success'
+                             });
+
             } catch (error) {
                 this.errors = error.response?.data?.errors
             }

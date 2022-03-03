@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ __('users.list_users') }} @parent
+    {{ __('users.create_user') }} @parent
 @endsection
 
-
 @section('content')
-    <list-users :categories="{{ $categories }}"></list-users>
+    <users-form :categories="{{ $categories }}"></users-form>
 @endsection

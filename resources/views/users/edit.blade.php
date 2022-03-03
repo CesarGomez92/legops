@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    <create-user :categories="{{ $categories }}"></create-user>
+    <users-form :categories="{{ $categories }}" :user="{{ $user }}"></users-form>
 @endsection

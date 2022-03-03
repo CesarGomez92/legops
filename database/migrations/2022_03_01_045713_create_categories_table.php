@@ -18,6 +18,11 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id')->after('email');
+            $table->foreign('category_id')->references('id')->on('categories');
+        });
     }
 
     /**
@@ -28,5 +33,10 @@ class CreateCategoriesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('categories');
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_category_id_foreign');
+            $table->dropColumn('category_id');
+        });
     }
 }

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UsersActionsController;
+use App\Http\Controllers\CategoryActionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/users');
+//    return view('welcome');
 });
+Route::get('/users', [UsersController::class, 'index']);
+Route::post('/users', [UsersController::class, 'store']);
+Route::get('/users/create', [UsersController::class, 'create']);
+Route::get('/users/{user}', [UsersController::class, 'edit']);
+Route::delete('/users/{user}', [UsersController::class, 'destroy']);
+Route::get('/get-users', [UsersActionsController::class, 'getAllUsers']);
+Route::get('/search-users', [UsersActionsController::class, 'searchUsers']);
+Route::get('/get-countries', [CategoryActionsController::class, 'getCountries']);
